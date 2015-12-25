@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : WildFlowers 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20120902
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>By OA</title>
+
+<link href="/static/css/style8.css" rel="stylesheet" type="text/css" media="screen" />
+<style type="text/css" media="all">
+input[type="submit"]{
+border: 1px solid; border-color: #EEE #CCC #CCC #EEE;
+color: #000; font-weight: bold; background: #F5F5F5;
+}
+input[type="reset"]{
+border: 1px solid; border-color: #EEE #CCC #CCC #EEE;
+color: #000; background: #F5F5F5;
+}
+</style>
+</head>
+<body>
+<div id="wrapper">
+	<div id="header-wrapper" class="container">
+		<div id="header" class="container">
+			<div id="logo">
+				<h1><a href="#">欢迎 {{ username }}!</a></h1>
+			</div>
+			<div id="menu">
+				<ul>
+					<li class="current_page_item"><a href="/">主页</a></li>
+                    {% if error %}
+                        <li><a href="/new/">新建文章</a></li>
+                        <li><a href="/logout/">注销</a></li>
+                        <li><a href="/modify/">个人信息</a></li>
+                    {% else %}
+                        <li><a href="/login/?register">注册</a></li>
+                        <li><a href="/login/">登陆</a></li>
+                    {% endif %}
+					<li><a href="/">联系我们</a></li>
+				</ul>
+			</div>
+		</div>
+		<div><img src="/static/images/img03.png" width="1000" height="40" alt="" /></div>
+	</div>
+	<!-- end #header -->
+	<div id="banner">
+	</div>
+	<div id="page">
+		<div id="content">
+			<div class="post">
+				<h2 class="title"><a href="#">查询结果</a></h2>
+				<div style="clear: both;">&nbsp;</div>
+				<div class="entry">
+                    {% for book in books %}
+                        <li>题目: <a href="/book/?Title={{ book.Title|urlencode }}">{{ book.Title }}</a></li>
+                    {% endfor %}
+                    {% for book in bookself %}
+                        <li>题目: <a href="/book/?Title={{ book.Title|urlencode }}">{{ book.Title }}</a></li>
+                    {% endfor %}
+				</div>
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+		</div>
+		<!-- end #content -->
+		<div id="sidebar">
+			<ul>
+				<li>
+					<h2>搜索</h2>
+                            <form action="/search/", method="post">
+                                <p>查询条件:
+                                    <select id="test" name="operate">
+                                        <option value="Time">时间</option>
+                                        <option value="Keywords">关键字</option>
+                                        <option value="Title">题目</option>
+                                        <option value="Type">类型</option>
+                                        <option value="Contant">内容</option>
+                                    </select><input type="submit" value="查询"></p>
+                                 <p id="time">起始:<input type="date" name="Starttime">结束:<input type="date" name="Endtime"></p>
+                                 
+                                 <p>
+                                 <select id="type" name="Type">
+                                    {% if category %}
+                                            {% for cate in category %}
+                                                    <option value="{{ cate.name }}">{{ cate.name }}</option>
+                                            {% endfor %}
+                                    {% endif %}
+                                </select>
+                                </p>
+                                <p id="first">请输入查询内容:<input type="text" name="Keywords"></p>
+                                <p id="second">请输入查询内容:<input type="text" name="Title"></p>
+                                <p id="third">请输入查询内容:<input type="text" name="Contant"></p>
+                            </form>
+				</li>
+			</ul>
+		</div>
+		<!-- end #sidebar -->
+		<div style="clear: both;">&nbsp;</div>
+	</div>
+	<div class="container"><img src="/static/images/img03.png" width="1000" height="40" alt="" /></div>
+	<!-- end #page --> 
+</div>
+
+<script language="javascript"> 
+    function clock() 
+    { 
+          var myselect =document.getElementById("test");
+          var index =myselect.selectedIndex;
+          var x =myselect.options[index].value;
+          var target = document.getElementById('time');
+          target.style.display = (x=="Time")?'block':'none';
+          var targettwo = document.getElementById('type');
+          targettwo.style.display = (x=="Type")?'block':'none';
+          var targetthr = document.getElementById('first');
+          targetthr.style.display = (x=="Keywords")?'block':'none';
+          var targetfour = document.getElementById('second');
+          targetfour.style.display = (x=="Title")?'block':'none';
+          var targetfive = document.getElementById('third');
+          targetfive.style.display = (x=="Contant")?'block':'none';
+    } 
+    function init(){
+        	clock();
+        	setInterval(clock,200);
+    }
+    init();
+</script>
+
+<div id="footer-content"></div>
+<div id="footer">
+	<p>Copyright (c) 2015 OOA.com. All rights reserved. Design by <a href="/" rel="nofollow">OA</a>.</p>
+</div>
+<!-- end #footer -->
+</body>
+</html>

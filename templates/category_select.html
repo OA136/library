@@ -1,0 +1,16 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body>
+    {% load category_tags %}
+    {% if category %}
+            <ul>
+                {% for cate in category %}
+                    <li>
+                        <option value="{{ cate.name }}">{{ cate.name }} {% category_select cate %}</option>
+                    </li>
+                {% endfor %}
+            </ul>
+            <pre class="brush:xml;"></pre>
+        {% endif %}
+</body>
+</html>

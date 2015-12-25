@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html dir="ltr" lang="en-US">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>欢迎您!</title>
+
+	<!--- CSS --->
+	<link rel="stylesheet" href="/static/css/style.css" type="text/css" />
+
+
+	<!--- Javascript libraries (jQuery and Selectivizr) used for the custom checkbox --->
+
+	<!--[if (gte IE 6)&(lte IE 8)]>
+
+	<!--[endif]-->
+
+	</head>
+
+	<body>
+		<div id="container">
+			<form align="center" action="/login/" method="post">
+				<div class="login">欢迎登陆!</div>
+				<div class="username-text" style="font-size:26px">用户名:</div>
+				<div class="password-text" style="font-size:26px">密码:</div>
+				<div class="username-field">
+					<input type="text" name="UserName" value="" />
+				</div>
+				<div class="password-field">
+					<input type="password" name="PassWord" value="" />
+				</div>
+				<!---input type="checkbox" name="remember-me" id="remember-me" /><label for="remember-me">Remember me</label--->
+				<!---div class="forgot-usr-pwd">Forgot <a href="#">username</a> or <a href="#">password</a>?</div--->
+				<input type="submit" name="operate" value="登陆" />
+                  <input type="submit" name="operate" value="注册" />
+                  <input type="submit" name="operate" value="返回主页"/>        
+                  <div id="container">
+                         <a style="font-size:20px;" target="_blank" href="/send/">?忘记密码</a>
+                  </div>
+			</form>
+		</div>
+
+		<div id="footer">
+			Copyright &copy; 2015.Team name OA.<a target="_blank" href="/">Home</a>
+		</div>
+</body>
+</html>

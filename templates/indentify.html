@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>验证验证码</title>
+<link rel="stylesheet" href="/static/css/style2.css">
+<script type="text/javascript" src="/static/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="/static/js/easyform.js"></script>
+</head>
+<body>
+<br>
+<div class="form-div">
+    <p style="margin-left:120px; margin-top:10px;font-size:30px">
+        {% if errori %}
+            验证码错误
+        {% endif %}
+        请输入
+    </p>
+    <form id="reg-form" action="" method="post">
+        <table>
+            <tr>
+                <td>验证码</td>
+                <td><input name="indentify" type="text" id="uid" easyform="length:2-16;char-normal;real-time;" message="用户名必须为4—16位的英文字母或数字" easytip="disappear:lost-focus;theme:blue;" ajax-message="用户名已存在!">
+                </td>
+            </tr>
+        </table>
+            <input value="提交" type="submit" style="margin-left:180px; margin-bottom:0px;">
+            <input name="username" type="hidden" value="{{ username }}">
+        <br class="clear">
+    </form>
+</div>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+</div>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<html>
+<body>
+    
+    {% load category_tags %}
+    {% if categories %}
+        <ul>
+            {% for cate in categories %}
+                <li>{{ cate.name }} 
+                {% if cate.true == "1" %}
+                    {% category_tree cate %}
+                {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+        <pre class="brush:xml;"></pre>
+    {% endif %}
+
+</body>
+</html>

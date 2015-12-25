@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : WildFlowers 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20120902
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>By OA</title>
+
+<link href="/static/css/style5.css" rel="stylesheet" type="text/css" media="screen" />
+<style type="text/css" media="all">
+input[type="submit"]{
+border: 1px solid; border-color: #EEE #CCC #CCC #EEE;
+color: #000; font-weight: bold; background: #F5F5F5;
+}
+input[type="reset"]{
+border: 1px solid; border-color: #EEE #CCC #CCC #EEE;
+color: #000; background: #F5F5F5;
+}
+</style>
+</head>
+<body>
+<div id="wrapper">
+	<div id="header-wrapper" class="container">
+		<div id="header" class="container">
+			<div id="logo">
+				<h1><a href="#">欢迎</a></h1>
+			</div>
+			<div id="menu">
+				<ul>
+					<li class="current_page_item"><a href="/">主页</a></li>
+                    {% if error0 %}
+                        <li><a href="/new/">新建文章</a></li>
+                        <li><a href="/logout/">注销</a></li>
+                        <li><a href="/modify/">个人信息</a></li>
+                    {% else %}
+                        <li><a href="/login/?register">注册</a></li>
+                        <li><a href="/login/">登陆</a></li>
+                    {% endif %}
+					<li><a href="/">联系我们</a></li>
+				</ul>
+			</div>
+		</div>
+		<div><img src="/static/images/img03.png" width="1000" height="40" alt="" /></div>
+	</div>
+	<!-- end #header -->
+	<div id="banner">
+		<div class="content"><img src="/static/images/img04.jpg" width="980" height="270" alt="" /></div>
+		<div><img src="/static/images/img03.png" width="1000" height="40" alt="" /></div>
+	</div>
+	<div id="page">
+		<div id="content">
+			<div class="post">
+				<h2 class="title"><a href="#">{{ book.Title }} </a></h2>
+				<p class="meta"><span class="date">{{ book.WriteDate }}</span><span class="posted">Posted by <a href="#">{{ username }}</a></span></p>
+				<div style="clear: both;">&nbsp;</div>
+				<div class="entry">
+					<script type="text/javascript" src="/static/ckeditor/ckeditor/ckeditor.js"></script>
+                        <textarea class="ckeditor" name="Contant" disabled>{{ book.Contant }}</textarea>
+					<p><img src="/static/images/img06.jpg" width="580" height="200" alt="" /></p>
+					<p class="links">
+                            {% if error %}
+                                <a href="/update/?Title={{ book.Title|urlencode }}">编辑</a>
+                                <a href="/delete/?Title={{ book.Title|urlencode }}">删除</a>
+                            {% else %}
+                                <form action="" method="post">
+                                    <p><textarea rows="4" cols="20" name="comment"></textarea></p>
+                                    <p><input type="hidden" name="booktitle" value="{{ book.Title }}"><input type="submit" name="com" value="评论"><input type="reset" name="chong" value="重置"></p>
+                                </form>
+                            {% endif %}
+
+                      </p>
+				</div>
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+		</div>
+		<!-- end #content -->
+		<div id="sidebar">
+			<ul>
+				<li>
+					<h2>所有评论</h2>
+					<ul>
+                            {% for com in comment %}
+                                <li>{{ com.commenter }}: {{ com.comment }} at {{ com.datetime }}</li>
+                            {% endfor %}
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<!-- end #sidebar -->
+		<div style="clear: both;">&nbsp;</div>
+	</div>
+	<div class="container"><img src="/static/images/img03.png" width="1000" height="40" alt="" /></div>
+	<!-- end #page --> 
+</div>
+<div id="footer-content"></div>
+<div id="footer">
+	<p>Copyright (c) 2015 OOA.com. All rights reserved. Design by <a href="/" rel="nofollow">OA</a>.</p>
+</div>
+<!-- end #footer -->
+</body>
+</html>
